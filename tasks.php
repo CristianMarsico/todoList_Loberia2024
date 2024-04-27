@@ -71,7 +71,7 @@ function newTask(){
             $descripcion = $_POST['descripcion'];
             $prioridad = $_POST['prioridad'];
             insertTask($nombre, $descripcion, $prioridad);
-            header("Location:".BASE_URL."task");
+            header("Location:".BASE_URL."tasks");
         }else{
             echo "faltan datos";    
         }
@@ -80,12 +80,12 @@ function newTask(){
 
 function deleteTask($id){
   delete($id);
-  header("Location:".BASE_URL."task");
+  header("Location:".BASE_URL."tasks");
 }
 
 function finalizeTask($id){
   finalize($id);
-  header("Location:".BASE_URL."task");
+  header("Location:".BASE_URL."tasks");
 }
 
 function showTask($id){
