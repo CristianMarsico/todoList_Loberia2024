@@ -1,10 +1,11 @@
 <?php
 
 function showFormAddTask(){
-    echo '  
-    <form class="col-3 m-auto formAddTask" action="addTask" method="POST">
+    echo '<h1>Lista de tareas</h1>
+  
+    <form class="col-3 m-auto" action="addTask" method="POST">
     
-      <legend class="text-center">Agregar Tareas</legend>
+      <legend class="text-center">Agregar Tarea</legend>
       <div class="mb-3">
         <label class="form-label">Nombre de Tarea</label>
         <input type="text" name="nombre" class="form-control" placeholder="Ingrese nombre">

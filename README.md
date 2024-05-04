@@ -1,9 +1,8 @@
-# 26/4 Que hicimos :
+# 3/5 Que hicimos :
 
-## Establecemos la conexión en un archivo externo.
-## Agregamos acciones a la tabla.
-## Implementamos el funcionamiento de los botones de la tabla.
-## Establecemos la conexión desde PHP a la base de datos.
-## HTML duplicado lo llevamos a una carpeta llamada templates con el objetivo de reutilizar ese codigo.
-## Establecemos algunos estilos.
-## Explicamos como exportar la base de datos y como crear las relaciones.
+## Usamos el patrón MVC, dividimos la app en tres componentes principales para mejorar la organización del código, mantenibilidad y permitir la reutilización de componentes.
+## Creamos una carpeta "app" en la misma se encuentran el o los controladores, modelos y vistas.
+### Modelo: Representa los datos y la lógica de negocio de la aplicación.
+### Vista: Es la interfaz de usuario que presenta la información al usuario y recibe la entrada del usuario (puede usar condiciones como if, else, bucles).
+### Controlador: Maneja las interacciones del usuario y coordina las actualizaciones entre el modelo y la vista.
+## Manejo y usos de Clases, nos permite separar responsabilidades siendo más facil de mantener el código.

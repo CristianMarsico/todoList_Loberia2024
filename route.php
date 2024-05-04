@@ -1,6 +1,7 @@
 <?php
 
-require_once "tasks.php";
+require_once "app/controller/TaskController.php";
+require_once "app/controller/ErrController.php";
 
 // definimos la base url de forma dinamica
     define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
@@ -16,7 +17,8 @@ require_once "tasks.php";
     //  print_r($parametro);
     switch ($parametro[0]) {
         case 'tasks':
-            showTasks();
+            $controller = new TaskController();
+            $controller->showTasks();
             break;
 
         case 'about':
@@ -28,22 +30,27 @@ require_once "tasks.php";
             break;
 
         case 'addTask':
-            newTask();
+            $controller = new TaskController();
+            $controller->newTask();
             break;
 
         case 'delete':
-            deleteTask($parametro[1]);
+            $controller = new TaskController();
+            $controller->deleteTask($parametro[1]);
             break;
 
     
-        case 'finalize':
-            finalizeTask($parametro[1]);
+         case 'finalize':
+            $controller = new TaskController();
+            $controller->finalizeTask($parametro[1]);
             break;
 
         case 'show':
-            showTask($parametro[1]);
+            $controller = new TaskController();
+            $controller->showTask($parametro[1]);
             break;
 
         default:
-        //    TODO:: hacer algo
+           $err = new ErrController();
+           $err->showErr("404 not found");
     }
