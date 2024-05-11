@@ -3,18 +3,26 @@ require_once "app/model/Model.php";
 
 class TaskModel extends Model{
 
-    function getAllTasks(){
+    /*Estamos en el modelo de TAREAS, por ende, 
+    se pueden utilizar nombres más concisos y descriptivos. 
+    Por ejemplo, en lugar de getAllTasks(), simplemente getAll() podría ser 
+    suficiente si queda claro que se refiere a todas las tareas.
+
+    (HACER LO MISMO EN LOS CONTROLADORES Y VISTAS)
+    */
+
+    function getAll(){
         //abrimos la conexion;
         $db = $this->createConexion();
        
         //Enviar la consulta
         $sentencia = $db->prepare("SELECT * FROM tarea");
         $sentencia->execute();
-        $usuarios = $sentencia->fetchAll(PDO::FETCH_OBJ);
-        return $usuarios;
+        $tareas = $sentencia->fetchAll(PDO::FETCH_OBJ);
+        return $tareas;
     }
     
-    function insertTask($nombre, $descr, $prioridad){
+    function insert($nombre, $descr, $prioridad){
         //abrimos la conexion;
         $db = $this->createConexion();
        
@@ -36,7 +44,7 @@ class TaskModel extends Model{
         $resultado->execute([1,$id]); // ejecuta
     }
     
-    function getTask($id){
+    function get($id){
         //abrimos la conexion;
         $db = $this->createConexion();
        

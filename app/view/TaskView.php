@@ -23,7 +23,11 @@ class TaskView {
         </tr>
         </thead>
       <tbody>';
-      
+     if(count($tareas) == 0){
+      echo"<tr>
+            <td colspan=5>No hay tareas para mostrar</td>
+          </tr>";
+     } 
       
     foreach ($tareas as $tarea) {
         $col1 = "<td>$tarea->nombre</td>";

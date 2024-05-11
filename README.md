@@ -1,8 +1,6 @@
-# 3/5 Que hicimos :
+# 10/5 Que hicimos :
 
-## Usamos el patrón MVC, dividimos la app en tres componentes principales para mejorar la organización del código, mantenibilidad y permitir la reutilización de componentes.
-## Creamos una carpeta "app" en la misma se encuentran el o los controladores, modelos y vistas.
-### Modelo: Representa los datos y la lógica de negocio de la aplicación.
-### Vista: Es la interfaz de usuario que presenta la información al usuario y recibe la entrada del usuario (puede usar condiciones como if, else, bucles).
-### Controlador: Maneja las interacciones del usuario y coordina las actualizaciones entre el modelo y la vista.
-## Manejo y usos de Clases, nos permite separar responsabilidades siendo más facil de mantener el código.
+## Creamos el archivo 'config.php', donde usamos variables de entorno.
+## Creamos funciones en la clase 'Model.php', las cuales permiten crear esquemas de base de datos como tambien
+## tablas o entidades.
+## Quitamos nombres redundantes de las funciones (Leer comentario en la clase 'TaskModel.php').

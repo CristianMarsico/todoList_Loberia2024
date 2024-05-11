@@ -1,3 +1,7 @@
 .finalizada{
     text-decoration: line-through;
 }
+
+tr, td{
+    text-align: center;
+}

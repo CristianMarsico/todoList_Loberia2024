@@ -17,12 +17,12 @@ class TaskController {
     }
 
     function showTasks(){
-        $tareas = $this->model->getAllTasks();
+        $tareas = $this->model->getAll();
         $this->view->showTasks($tareas);
     }
 
     function showTask($id){
-        $tarea = $this->model->getTask($id);
+        $tarea = $this->model->get($id);
         if($tarea){
             $this->view->showTask($tarea);
         }else{
@@ -50,7 +50,7 @@ class TaskController {
                 $nombre = $_POST['nombre'];
                 $descripcion = $_POST['descripcion'];
                 $prioridad = $_POST['prioridad'];
-                $this->model->insertTask($nombre, $descripcion, $prioridad);
+                $this->model->insert($nombre, $descripcion, $prioridad);
                 header("Location:".BASE_URL."tasks");             
 
             }else{
