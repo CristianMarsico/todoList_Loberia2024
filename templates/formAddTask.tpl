@@ -1,8 +1,4 @@
-<?php
-
-function showFormAddTask(){
-    echo '<h1>Lista de tareas</h1>
-  
+<h1>Lista de tareas</h1>
     <form class="col-3 m-auto" action="addTask" method="POST">
     
       <legend class="text-center">Agregar Tarea</legend>
@@ -27,5 +23,3 @@ function showFormAddTask(){
       </div>
       <button type="submit" class="btn btn-primary col-12">Submit</button>
   </form>
-     ';
-}

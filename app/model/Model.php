@@ -52,7 +52,7 @@ class Model {
                 `prioridad` int(11) NOT NULL,
                 `finalizada` tinyint(1) NOT NULL,
                 PRIMARY KEY (`id`)
-                ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+                );
                 
                 CREATE TABLE IF NOT EXISTS `usuario` (
                 `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -60,7 +60,8 @@ class Model {
                 `password` varchar(250) NOT NULL,
                 `rol` varchar(20) NOT NULL,
                 PRIMARY KEY (`id`)
-                ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;";
+                );
+                ";
         
         $this->conexion->query($sql);
     }

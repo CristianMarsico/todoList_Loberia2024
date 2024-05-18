@@ -1,81 +1,31 @@
 <?php
-// require_once "sql_tasks.php";
-require_once "templates/formAddTask.php";
-require_once "templates/htmlStar.php";
-require_once "templates/htmlEnd.php";
+require_once "libs/Smarty.class.php";
+
 
 class TaskView {
 
-  function showTasks($tareas){
+  private $smarty;
 
-      htmlStart();
-      showFormAddTask();
-      
-      echo'
-      <table class="table table-success table-striped mt-2">
-        <thead>
-          <tr>
-          <th scope="col">Nombre</th>
-          <th scope="col">Descripción</th>
-          <th scope="col">Prioridad</th>
-          <th scope="col">Finalizada</th>
-          <th scope="col">Acciones</th>
-        </tr>
-        </thead>
-      <tbody>';
-     if(count($tareas) == 0){
-      echo"<tr>
-            <td colspan=5>No hay tareas para mostrar</td>
-          </tr>";
-     } 
-      
-    foreach ($tareas as $tarea) {
-        $col1 = "<td>$tarea->nombre</td>";
-        $col2 = "<td>$tarea->descripcion</td>";
-        $col3 = "<td>$tarea->prioridad</td>";
-        $estado = $tarea->finalizada ? "Tarea finalizada": "Sin finalizar";
-        $col4 = "<td>$estado</td>";
-      $col5 = !$tarea->finalizada ?
-      
-      "<td>
-                <a href='show/$tarea->id' class='btn btn-primary'>Ver</a>
-                <a href='finalize/$tarea->id' class='btn btn-success'>Finalizar</a>
-            </td>"
-        :
-          "<td>            
-              <a href='delete/$tarea->id' class='btn btn-danger'>Eliminar</a>
-            </td>"
-            ;
-    
-      $class = $tarea->finalizada ? "finalizada": "";
-    
-        echo"<tr class='$class'>$col1 $col2 $col3 $col4 $col5</tr>";
-    }
-      
-    echo'  
-      </tbody>
-    </table>
-      ';
-    
-      htmlEnd();
-    
+  function __construct(){
+    $this->smarty = new Smarty();
+  }
+
+  function showTasks($tareas){
+    // assign para asignar varibles a smarty clave -> valor
+    $this->smarty->assign("base", BASE_URL);
+    $this->smarty->assign("cantidad", count($tareas));
+    $this->smarty->assign("tareas", $tareas);
+
+    // display para mostrar el template
+    $this->smarty->display('tableTask.tpl');
   }
       
 
   function showTask($tarea){
-    htmlStart();
+    $this->smarty->assign("base", BASE_URL);
+    $this->smarty->assign("tarea", $tarea);
 
-    echo '
-      <div class="card mt-3" style="width: 18rem;">
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">'.$tarea->nombre.'</li>
-          <li class="list-group-item">'.$tarea->descripcion.'</li>
-          <li class="list-group-item">Prioridad:'.$tarea->prioridad.'</li>
-        </ul>
-      </div>
-      <a href="tasks" class="btn btn-primary mt-3">Volver</a>
-    ';
-    htmlEnd();
+    $this->smarty->display('showTask.tpl');
   }
 
 

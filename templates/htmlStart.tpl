@@ -1,11 +1,7 @@
-<?php
-
-function htmlStart(){
-    echo '
-    <!DOCTYPE html>
+<!DOCTYPE html>
     <html lang="en">
     <head>
-    <base href="'.BASE_URL.'">
+    <base href={$base}>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>TodoList [Lobería-2024]</title>
@@ -29,11 +25,12 @@ function htmlStart(){
               <a class="nav-link" href="about">About</a>
             </li>
             <li class="nav-item">
+              <a class="nav-link" href="hash">md5 vs bcrypt</a>
+            </li>
+            <li class="nav-item">
               <a class="nav-link" href="login">Login</a>
             </li>
           </ul>
         </div>
       </div>
     </nav>
-    ';
-}
