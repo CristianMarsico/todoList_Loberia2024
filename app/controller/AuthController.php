@@ -5,6 +5,7 @@ class AuthController
 {
     private $model;
     private $view;
+
     public function __construct()
     {
         $this->view = new AuthView();
@@ -15,6 +16,7 @@ class AuthController
     {
         $this->view->showLogin();
     }
+
     function verify()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -24,7 +26,13 @@ class AuthController
                 $usuario = $this->model->getUser($email);
 
                 if ($usuario && password_verify($password, $usuario->password)) {
-                    header("Location:" . BASE_URL . "tasks");
+
+                    session_start();
+                    $_SESSION['IS_LOGGED'] = true;
+                    $_SESSION['USERNAME'] = $usuario->email;
+                    $_SESSION['ROLE'] = $usuario->rol;
+                    
+                    header("Location:" . BASE_URL . "tasks");die();
                 } else {
                     $this->view->showLogin("Usuario incorrecto");
                 }
@@ -33,4 +41,13 @@ class AuthController
             }
         }
     }
+
+    function logout(){
+        session_start();
+        session_destroy();
+        header("Location:" . BASE_URL . "login");die();
+
+    }
+
+
 }

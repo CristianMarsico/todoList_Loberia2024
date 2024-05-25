@@ -1,18 +1,16 @@
 <?php
-require_once "libs/Smarty.class.php";
+
+require_once "app/view/View.php";
 
 
-class TaskView {
 
-  private $smarty;
+class TaskView extends View{
 
-  function __construct(){
-    $this->smarty = new Smarty();
-  }
-
+ 
   function showTasks($tareas){
+   
     // assign para asignar varibles a smarty clave -> valor
-    $this->smarty->assign("base", BASE_URL);
+  
     $this->smarty->assign("cantidad", count($tareas));
     $this->smarty->assign("tareas", $tareas);
 
@@ -22,7 +20,7 @@ class TaskView {
       
 
   function showTask($tarea){
-    $this->smarty->assign("base", BASE_URL);
+  
     $this->smarty->assign("tarea", $tarea);
 
     $this->smarty->display('showTask.tpl');

@@ -8,7 +8,7 @@ define('BASE_URL', '//' . $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'
 
 
 if (empty($_GET['action'])) {
-    $_GET['action'] = 'tasks';
+    $_GET['action'] = 'login';
 }
 
 $action = $_GET['action'];
@@ -48,6 +48,12 @@ switch ($parametro[0]) {
             $controller = new AuthController();
             $controller->showLogin();
             break;
+
+
+    case 'logout':
+        $controller = new AuthController();
+        $controller->logout();
+        break;
 
     case 'verify':
         $controller = new AuthController();
