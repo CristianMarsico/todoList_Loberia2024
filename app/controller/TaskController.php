@@ -2,6 +2,7 @@
  require_once "app/model/TaskModel.php";
  require_once "app/view/TaskView.php";
  require_once "app/view/ErrorView.php";
+ require_once "helpers/AuthHelpers.php";
 
 class TaskController {
 
@@ -19,21 +20,19 @@ class TaskController {
 
     function showTasks(){  
      
-      if( $this->checkLogged()){
+      if( AuthHelpers::checkLogged()){
            $tareas = $this->model->getAll();
            $this->view->showTasks($tareas);
-        }
-       
+        }   
     }
 
     function showTask($id){
-         if( $this->checkLogged()){
+         if( AuthHelpers::checkLogged()){
              $tarea = $this->model->get($id);
-             if($tarea){
+             if($tarea)
                  $this->view->showTask($tarea);
-             }else{
-                 $this->err->showErr("No existe la tarea con id: $id");
-             }
+             else
+                 $this->err->showErr("No existe la tarea con id: $id");      
           }
     }
 
@@ -67,18 +66,7 @@ class TaskController {
     }
 
 
-    public function checkLogged() {
-        if (session_status() != PHP_SESSION_ACTIVE){
-            session_start();
-        }
-        if (!isset($_SESSION['IS_LOGGED'])) {
-            header('Location: ' . BASE_URL . "login");
-            die();  
-        } else{
-
-            return true;
-        } 
-    }
+   
       
 
 
